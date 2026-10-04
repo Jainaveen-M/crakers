@@ -117,7 +117,8 @@ function doPost(e) {
         accountName: "Gobinath R",
         accountNumber: "815210110019916",
         ifsc: "BKID0008152",
-        branch: "SIVAKASI"
+        branch: "SIVAKASI",
+        gpayPhonePe: "9524803201 (Gobinath R)"
       }
     }, 200);
   } catch (error) {
