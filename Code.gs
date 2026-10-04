@@ -113,11 +113,11 @@ function doPost(e) {
       totalAmount: Number(totalAmount),
       message: "Order placed successfully.",
       bankDetails: {
-        bankName: "HDFC Bank",
-        accountNumber: "123456789012",
-        ifsc: "HDFC0001234",
-        accountHolderName: "Jeyalakshmi Crackers",
-        upiId: "jeyalakshmicrackers@upi"
+        bankName: "Bank of India",
+        accountName: "Gobinath R",
+        accountNumber: "815210110019916",
+        ifsc: "BKID0008152",
+        branch: "SIVAKASI"
       }
     }, 200);
   } catch (error) {
