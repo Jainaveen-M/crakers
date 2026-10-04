@@ -46,7 +46,7 @@
         </div>
         <div class="flex items-center gap-2 bg-white/15 border border-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold shadow-inner">
           <span class="bg-yellow-400 text-red-900 px-2 py-0.5 rounded-md font-extrabold text-xs uppercase">UPTO 80% OFF</span>
-          <span>Min. Order ₹2,500</span>
+          <span>Min. Order ₹1,000</span>
         </div>
       </div>
     </header>
@@ -90,9 +90,9 @@
         </div>
       </section>
 
-      <!-- Side Panel Cart & Form -->
-      <aside class="w-full lg:w-[380px] lg:shrink-0 mt-8 lg:mt-0">
-        <div class="sticky top-20 space-y-5">
+      <!-- Side Panel Cart & Form (Independently Scrollable Sticky Sidebar) -->
+      <aside id="checkoutSection" class="w-full lg:w-[380px] lg:shrink-0 mt-8 lg:mt-0">
+        <div class="lg:sticky lg:top-20 space-y-5 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:pr-1.5 no-scrollbar">
           <!-- Order Summary -->
           <div class="bg-white rounded-2xl festive-shadow p-5 border border-amber-100/60">
             <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
@@ -104,7 +104,7 @@
               </span>
             </div>
 
-            <div id="cartItems" class="space-y-3 max-h-60 overflow-y-auto pr-1 no-scrollbar"></div>
+            <div id="cartItems" class="space-y-3 max-h-56 overflow-y-auto pr-1 no-scrollbar"></div>
 
             <div class="mt-5 border-t border-slate-100 pt-4 space-y-2">
               <div class="flex justify-between text-sm text-slate-600">
@@ -123,7 +123,7 @@
               <div id="minimumOrderWarning"
                 class="hidden mt-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm px-3.5 py-2.5 flex items-start gap-2">
                 <span class="text-base leading-none">⚠️</span>
-                <span>Minimum order value is <strong>₹2,500</strong>. Please add items worth <strong id="shortfallAmount">₹2,500</strong> more.</span>
+                <span>Minimum order value is <strong>₹1,000</strong>. Please add items worth <strong id="shortfallAmount">₹1,000</strong> more.</span>
               </div>
             </div>
           </div>
@@ -182,6 +182,17 @@
     </main>
   </div>
 
+  <!-- Mobile Floating Checkout Bar -->
+  <div id="mobileCartBar" class="lg:hidden fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-md text-white p-3.5 border-t border-slate-800 flex items-center justify-between z-30 shadow-2xl transition transform translate-y-full">
+    <div>
+      <p id="mobileCartSummary" class="text-xs font-bold text-slate-300">0 items selected</p>
+      <p id="mobileCartTotal" class="text-lg font-black text-amber-400">₹0</p>
+    </div>
+    <a href="#checkoutSection" class="bg-gradient-to-r from-orange-500 to-red-600 text-white text-sm font-black px-5 py-2.5 rounded-xl shadow-md flex items-center gap-1.5">
+      <span>🛒</span> Checkout & Pay
+    </a>
+  </div>
+
   <!-- Footer Section -->
   <footer class="bg-gradient-to-r from-red-950 via-slate-900 to-amber-950 text-white mt-16 border-t-4 border-amber-500">
     <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -220,7 +231,7 @@
             </p>
             <p class="flex items-center gap-2.5">
               <span class="text-amber-400 text-base shrink-0">🌐</span>
-              <span><strong>Website:</strong> <a href="https://www.jeyalakshmicrackers.com" target="_blank" class="hover:underline text-amber-300 font-bold">www.jeyalakshmicrackers.com</a></span>
+              <span><strong>Website:</strong> <a href="https://www.jeyalakshmicracker.com" target="_blank" class="hover:underline text-amber-300 font-bold">www.jeyalakshmicracker.com</a></span>
             </p>
           </div>
         </div>
@@ -282,7 +293,7 @@
   </div>
 
   <script>
-    const MINIMUM_ORDER_VALUE = 2500;
+    const MINIMUM_ORDER_VALUE = 1000;
     const APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxg1sOoVSGRiI6avmS27Iz3CBNc3snSngpHKYcXeQokOi9CTWS4YFeIjkrlhYS316h51w/exec";
     const ORDER_SECRET = "CrackerBazaar@2026!SecureOrder";
 
@@ -2050,6 +2061,9 @@
     const confirmationModal = document.getElementById("confirmationModal");
     const closeModalBtn = document.getElementById("closeModalBtn");
     const doneModalBtn = document.getElementById("doneModalBtn");
+    const mobileCartBar = document.getElementById("mobileCartBar");
+    const mobileCartSummary = document.getElementById("mobileCartSummary");
+    const mobileCartTotal = document.getElementById("mobileCartTotal");
 
     function formatCurrency(value) {
       return new Intl.NumberFormat("en-IN", {
@@ -2206,6 +2220,14 @@
       cartCountBadge.textContent = `${totalItems} item${totalItems === 1 ? "" : "s"}`;
       subtotalValue.textContent = formatCurrency(subtotal);
       totalAmountValue.textContent = formatCurrency(subtotal);
+
+      if (totalItems > 0) {
+        mobileCartBar.classList.remove("translate-y-full");
+        mobileCartSummary.textContent = `${totalItems} item${totalItems === 1 ? "" : "s"} in cart`;
+        mobileCartTotal.textContent = formatCurrency(subtotal);
+      } else {
+        mobileCartBar.classList.add("translate-y-full");
+      }
 
       const itemsInCart = PRODUCTS.filter(p => (cart[p.id] || 0) > 0);
 
