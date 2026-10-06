@@ -31,7 +31,7 @@
     };
   </script>
   <style>
-    html { scroll-behavior: smooth; scroll-padding-top: 10.25rem; }
+    html { scroll-behavior: smooth; scroll-padding-top: 11.5rem; }
     h1, h2, h3, dd, .font-display { font-variant-numeric: lining-nums; }
     body { background: #fff6ee; font-family: Poppins, system-ui, sans-serif; }
 
@@ -112,14 +112,14 @@
 
   <!-- Top nav -->
   <nav class="sticky top-0 z-30 bg-maroon-950/90 backdrop-blur border-b border-white/10 text-white">
-    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+    <div class="max-w-7xl mx-auto px-4 h-[72px] sm:h-20 flex items-center justify-between gap-3">
       <a href="#top" class="flex items-center gap-3 min-w-0">
-        <span class="h-10 w-10 shrink-0 rounded-xl bg-gold-400 flex items-center justify-center shadow-lg shadow-gold-400/30">
-          <svg viewBox="0 0 24 24" class="h-6 w-6 text-maroon-900" fill="currentColor"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/><circle cx="19" cy="18" r="1.6"/><circle cx="5" cy="19" r="1.2"/></svg>
+        <span class="h-11 w-11 sm:h-14 sm:w-14 shrink-0 rounded-2xl bg-gold-400 flex items-center justify-center shadow-lg shadow-gold-400/30">
+          <svg viewBox="0 0 24 24" class="h-7 w-7 sm:h-9 sm:w-9 text-maroon-900" fill="currentColor"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/><circle cx="19" cy="18" r="1.6"/><circle cx="5" cy="19" r="1.2"/></svg>
         </span>
         <span class="min-w-0">
-          <span class="block font-display font-bold text-lg leading-tight truncate"><span class="sm:hidden">Jeyalakshmi</span><span class="hidden sm:inline">Jeyalakshmi Crackers</span></span>
-          <span class="hidden sm:block text-[10px] tracking-[0.25em] font-semibold text-gold-400">SIVAKASI • FANCY CRACKERS</span>
+          <span class="block font-display font-bold text-xl sm:text-3xl leading-tight truncate"><span class="sm:hidden">Jeyalakshmi</span><span class="hidden sm:inline">Jeyalakshmi Crackers</span></span>
+          <span class="hidden sm:block text-xs tracking-[0.28em] font-semibold text-gold-400 mt-0.5">SIVAKASI • FANCY CRACKERS</span>
         </span>
       </a>
       <div class="hidden md:flex items-center gap-8 text-sm font-medium text-cream-200">
@@ -207,7 +207,7 @@
 
 
   <!-- Sticky toolbar: search + categories -->
-  <div id="shop" class="sticky top-16 z-20 mt-8 bg-cream-50/95 backdrop-blur border-b border-cream-200">
+  <div id="shop" class="sticky top-[72px] sm:top-20 z-20 mt-8 bg-cream-50/95 backdrop-blur border-b border-cream-200">
     <div class="max-w-7xl mx-auto px-4 pt-3 pb-2">
       <div class="flex items-center gap-3">
         <div class="relative flex-1">
@@ -239,7 +239,7 @@
     <!-- Cart & Checkout: sidebar on desktop, bottom sheet on mobile -->
     <aside id="checkoutSection"
       class="sheet fixed lg:static bottom-0 inset-x-0 z-50 lg:z-auto max-h-[88vh] lg:max-h-none overflow-y-auto lg:overflow-visible rounded-t-3xl lg:rounded-none bg-cream-50 lg:bg-transparent w-full lg:w-[390px] lg:shrink-0 p-4 lg:p-0 no-scrollbar">
-      <div class="lg:sticky lg:top-52 space-y-4 lg:max-h-[calc(100vh-14rem)] lg:overflow-y-auto no-scrollbar">
+      <div class="lg:sticky lg:top-[13.5rem] space-y-4 lg:max-h-[calc(100vh-15rem)] lg:overflow-y-auto no-scrollbar">
         <div class="lg:hidden flex items-center justify-between">
           <span class="h-1 w-10 rounded-full bg-stone-300 mx-auto absolute left-1/2 -translate-x-1/2 top-2"></span>
           <h2 class="font-display font-extrabold text-xl text-maroon-900 pt-2">Your order</h2>
